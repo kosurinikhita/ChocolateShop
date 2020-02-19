@@ -22,6 +22,7 @@ namespace ChocolateShop.Controllers
         {
             return View();
         }
+       
         [HttpPost]
         public ActionResult Create(Chocolate chocolate)
         {
@@ -32,7 +33,20 @@ namespace ChocolateShop.Controllers
         public ActionResult Delete(string Name)
         {
             chocolateRepository.DeleteChocolate(Name);
-            TempData["Message"] = "Chocolate deleted suuccessfully";
+            TempData["Message"] = "Chocolate deleted successfully";
+            return RedirectToAction("Index");
+        }
+        public ActionResult Edit(string name)
+        {
+            Chocolate chocolate = chocolateRepository.GetChocolate(name);
+            return View(chocolate);
+        }
+
+        [HttpPost]
+       public ActionResult Update(Chocolate chocolate)
+        {
+            chocolateRepository.UpdateChocolate(chocolate);
+            TempData["Message"] = "Updated successfully";
             return RedirectToAction("Index");
         }
     }

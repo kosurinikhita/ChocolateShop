@@ -36,5 +36,11 @@ namespace ChocolateShop.repository
                 chocolate.Remove(list);
             }
         }
+        public void UpdateChocolate(Chocolate chocolate)
+        {
+            Chocolate updateChocolate = GetChocolate(chocolate.Name);
+            updateChocolate.Price = chocolate.Price;
+            updateChocolate.Protein = chocolate.Protein;
+        }
     }
 }

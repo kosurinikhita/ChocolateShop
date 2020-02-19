@@ -1,0 +1,44 @@
+﻿@model ChocolateShop.entity.Chocolate
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+@using(Html.BeginForm("Update","Default",FormMethod.Post))
+{
+    @Html.HiddenFor(Model => Model.Name)
+    <table border="1" cellspacing="25">
+        <tr>
+            <td>
+                Name : 
+            </td>
+            <td>
+                @Html.TextBoxFor(Model => Model.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Price : 
+           </td>
+            <td>
+                @Html.TextBoxFor(Model => Model.Price)
+            </td>
+        </tr>
+        <tr>
+            <td>Protein : </td>
+            <td>
+                @Html.TextBoxFor(Model => Model.Protein)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Update"/>
+            </td>
+            <td>
+                <a href="Index">Back</a>
+            </td>
+        </tr>
+
+    </table>
+}
