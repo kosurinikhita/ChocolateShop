@@ -42,5 +42,6 @@ namespace ChocolateShop.repository
             updateChocolate.Price = chocolate.Price;
             updateChocolate.Protein = chocolate.Protein;
         }
+      
     }
 }
