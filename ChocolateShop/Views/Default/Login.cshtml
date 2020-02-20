@@ -1,0 +1,20 @@
+﻿@model Account.entity.Account
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+<table border="1" align="center">
+    <tr>
+        <td>Enter Username :</td>
+        <td>@Html.TextBoxFor(Model => Model.Name)</td>
+    </tr>
+    <tr>
+        <td>Enter Password :</td>
+        <td>@Html.TextBoxFor(Model => Model.Password)</td>
+    </tr>
+</table>
+<div align="center">
+    <input type="button" value="Login" />
+</div>

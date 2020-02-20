@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChocolateShop.entity", "Cho
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChocolateShop.repository", "ChocolateShop.repository\ChocolateShop.repository.csproj", "{CF420DB2-8015-412D-91CA-5ED38F7A128A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Account.entity", "Account.entity\Account.entity.csproj", "{3C9FBCCC-8137-4495-ABF3-8768B980B366}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{CF420DB2-8015-412D-91CA-5ED38F7A128A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF420DB2-8015-412D-91CA-5ED38F7A128A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF420DB2-8015-412D-91CA-5ED38F7A128A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C9FBCCC-8137-4495-ABF3-8768B980B366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C9FBCCC-8137-4495-ABF3-8768B980B366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C9FBCCC-8137-4495-ABF3-8768B980B366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C9FBCCC-8137-4495-ABF3-8768B980B366}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,51 @@
+﻿@model Account.entity.Account
+
+@{
+    ViewBag.Title = "Signup";
+}
+
+<h2>Signup</h2>
+<table border="1" align="center">
+    <tr>
+        <td>Enter Username : </td>
+        <td>@Html.TextBoxFor(Model => Model.Name)</td>
+    </tr>
+    <tr>
+        <td>Enter Password : </td>
+        <td>@Html.TextBoxFor(Model => Model.Password)</td>
+    </tr>
+    <tr>
+        <td>Enter Email : </td>
+        <td>@Html.TextBoxFor(Model => Model.Email)</td>
+    </tr>
+    <tr>
+        <td>Enter Password : </td>
+        <td>@Html.TextBoxFor(Model => Model.Password)</td>
+    </tr>
+    <tr>
+        <td>
+            Select city : 
+        </td>
+        <td>
+            @Html.DropDownList("City", new List<SelectListItem>
+       {
+           new SelectListItem {Text = "Hyderabad", Value = "1",Selected = true},
+           new SelectListItem {Text = "Banglore", Value="2"},
+           new SelectListItem {Text = "Chennai", Value="3"},
+           new SelectListItem {Text = "Pune", Value="4"}
+       }, "Select City")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Gender : 
+        </td>
+        <td>
+            Male @Html.RadioButtonFor(Model => Model.Gender, "Male")
+            Female @Html.RadioButtonFor(Model => Model.Gender, "Female")
+        </td>
+    </tr>
+</table>
+<div align="center">
+    <input type="button" value="Submit" />
+</div>

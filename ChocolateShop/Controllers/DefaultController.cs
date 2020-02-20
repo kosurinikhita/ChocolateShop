@@ -23,6 +23,7 @@ namespace ChocolateShop.Controllers
             return View();
         }
        
+
         [HttpPost]
         public ActionResult Create(Chocolate chocolate)
         {
@@ -49,5 +50,6 @@ namespace ChocolateShop.Controllers
             TempData["Message"] = "Updated successfully";
             return RedirectToAction("Index");
         }
+       
     }
 }

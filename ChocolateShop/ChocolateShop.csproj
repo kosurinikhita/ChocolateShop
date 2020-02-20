@@ -107,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -133,6 +134,10 @@
     <Content Include="Views\Default\Delete.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\Default\Edit.cshtml" />
+    <Content Include="Views\Default\Login.cshtml" />
+    <Content Include="Views\Default\Signup.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Signup.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -146,6 +151,10 @@
     <Folder Include="Views\DisplayList\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Account.entity\Account.entity.csproj">
+      <Project>{3c9fbccc-8137-4495-abf3-8768b980b366}</Project>
+      <Name>Account.entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ChocolateShop.entity\ChocolateShop.entity.csproj">
       <Project>{bcf3351c-9ee9-4628-9d20-a8f3a318fc2b}</Project>
       <Name>ChocolateShop.entity</Name>
