@@ -50,6 +50,18 @@ namespace ChocolateShop.Controllers
             TempData["Message"] = "Updated successfully";
             return RedirectToAction("Index");
         }
-       
+        public ActionResult Create_Post()
+        {
+            Chocolate chocolate = new Chocolate();
+            TryUpdateModel(chocolate);
+            if (ModelState.IsValid)
+            {
+                chocolateRepository.AddChocolate(chocolate);
+                TempData["Message"] = "Chocolate added successfully!!!";
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
     }
 }

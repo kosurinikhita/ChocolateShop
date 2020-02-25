@@ -7,45 +7,69 @@
 <h2>Signup</h2>
 <table border="1" align="center">
     <tr>
-        <td>Enter Username : </td>
-        <td>@Html.TextBoxFor(Model => Model.Name)</td>
-    </tr>
-    <tr>
-        <td>Enter Password : </td>
-        <td>@Html.TextBoxFor(Model => Model.Password)</td>
-    </tr>
-    <tr>
-        <td>Enter Email : </td>
-        <td>@Html.TextBoxFor(Model => Model.Email)</td>
-    </tr>
-    <tr>
-        <td>Enter Password : </td>
-        <td>@Html.TextBoxFor(Model => Model.Password)</td>
-    </tr>
-    <tr>
+        <td> @Html.LabelFor(model => model.Name, new { @class = "col-md-2 control-label" })</td>
+
         <td>
-            Select city : 
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
         </td>
+        <td>
+            @Html.ValidationMessageFor(model => model.Name)
+        </td>
+    </tr>
+    <tr>
+        <td style="text-align:right" ;> @Html.LabelFor(model => model.Password, new { @class = "col-md-2 control-label" })</td>
+
+        <td>
+            @Html.TextBoxFor(model => model.Password, new { @class = "form-control" })
+        </td>
+        <td>
+            @Html.ValidationMessageFor(model => model.Password)
+        </td>
+    </tr>
+    <tr>
+    <tr>
+        <td style="text-align:right" ;> @Html.LabelFor(model => model.Email, new { @class = "col-md-2 control-label" })</td>
+
+        <td>
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+        </td>
+        <td>
+            @Html.ValidationMessageFor(model => model.Email)
+        </td>
+    </tr>
+    
+    <tr>
+        <td> @Html.LabelFor(model => model.City, new { @class = "col-md-2 control-label" })</td>
         <td>
             @Html.DropDownList("City", new List<SelectListItem>
        {
-           new SelectListItem {Text = "Hyderabad", Value = "1",Selected = true},
-           new SelectListItem {Text = "Banglore", Value="2"},
-           new SelectListItem {Text = "Chennai", Value="3"},
-           new SelectListItem {Text = "Pune", Value="4"}
-       }, "Select City")
+             new SelectListItem{Text="Hyderabad",Value="1"},
+             new SelectListItem{Text="Coimbatore",Value="2"},
+             new SelectListItem{Text="Bangalore",Value="3"},
+
+      }, "Select city")
+        </td>
+        <td>
+            @Html.ValidationMessageFor(model => model.City)
         </td>
     </tr>
     <tr>
+        <td> @Html.LabelFor(model => model.Gender, new { @class = "col-md-2 control-label" })</td>
         <td>
-            Gender : 
+            @Html.RadioButtonFor(m => m.Gender, "Male")Male
+            @Html.RadioButtonFor(m => m.Gender, "Female")Female
+            @Html.RadioButtonFor(m => m.Gender, "Other")Others
         </td>
         <td>
-            Male @Html.RadioButtonFor(Model => Model.Gender, "Male")
-            Female @Html.RadioButtonFor(Model => Model.Gender, "Female")
+            @Html.ValidationMessageFor(model => model.Gender)
         </td>
     </tr>
 </table>
+@section Validation{
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+}
 <div align="center">
     <input type="button" value="Submit" />
 </div>
