@@ -1,33 +1,41 @@
 ﻿@model IEnumerable<ChocolateShop.entity.Chocolate>
-
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
-@Html.ActionLink("Create new Chocolate", "Create")
+<link href="~/Content/ChocoFunctions.css" rel="stylesheet" />
+@Html.ActionLink("Create new product", "Create")
 <br />
 @if (TempData["Message"] != null)
 {
     @Html.Label((string)TempData["Message"])
 }
-<table border="1">
-    <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Protein</th>
-    </tr>
-    @foreach (ChocolateShop.entity.Chocolate chocolate in @Model)
-    {
+<div class="products">
+    <table class="table" border="1">
         <tr>
-            <td>@chocolate.Name</td>
-            <td>@chocolate.Price</td>
-            <td>@chocolate.Protein</td>
-            <td>
-                @Html.ActionLink("Edit /", "Edit", new { name = chocolate.Name })
-                @Html.ActionLink("Delete", "Delete", new { name = chocolate.Name })
-            </td>
+            <th>Company</th>
+            <th>Name</th>
+            <th>Price</th>
+            @*<th>ManufactureDate</th>
+                <th>ExpiryDate</th>*@
+            <th>Description</th>
+            <th>Quantity</th>
         </tr>
-    }
-</table>
 
+        @foreach (ChocolateShop.entity.Chocolate item in Model)
+        {
+            <tr>
+                <td>@item.Company</td>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+                @*<td>@item.ManufactureDate</td>
+                    <td>@item.ExpiryDate</td>*@
+                <td>@item.Description</td>
+                <td>@item.Quantity</td>
+                <td>@Html.ActionLink("Edit", "Edit", new { id = item.Name })</td>
+                <td>@Html.ActionLink("Delete", "Delete", new { id = item.Name })</td>
+            </tr>
+        }
+    </table>
+</div>

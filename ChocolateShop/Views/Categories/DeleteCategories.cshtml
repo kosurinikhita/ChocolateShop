@@ -1,0 +1,30 @@
+﻿@model ChocolateShop.entity.Categories
+
+@{
+    ViewBag.Title = "DeleteCategories";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<h2>DeleteCategories</h2>
+<link href="~/Content/CategoriesStyle.css" rel="stylesheet" />
+@using (Html.BeginForm("DeleteCategories", "Categories", FormMethod.Post))
+{
+    <div class="Coperations">
+        <table class="catotable" border="1">
+
+            <tr>
+                <td>Name :</td>
+                <td>@Html.TextBoxFor(Model => Model.Name)</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" />
+                </td>
+                <td>
+                    <a href="Index">Back</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+}

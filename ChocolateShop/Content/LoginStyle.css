@@ -1,0 +1,26 @@
+﻿body {
+
+}
+.login {
+    border: 0;
+    margin-top: 50px;
+    border-color: transparent;
+}
+td {
+    padding: 15px;
+}
+span{
+    color:palevioletred;
+}
+.loginbox {
+    width: 320px;
+    height: 240px;
+    background: #000;
+    opacity: 0.5;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+}

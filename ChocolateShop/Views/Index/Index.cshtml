@@ -4,21 +4,30 @@
 }
 
 <h2>Index</h2>
-@Html.ActionLink("Create new product","Create")
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Protein</th>
-    </tr>
-</table>
-@foreach(ChocolateShop.entity.Chocolate item in Model)
+@Html.ActionLink("Create new product", "Create")
+
+<div class="form-horizontal">
+    
+        <div>Company</div>
+        <div>Name</div>
+        <div>Price</div>
+        @*<th>ManufactureDate</th>
+            <th>ExpiryDate</th>*@
+        <div>Description</div>
+        <div>Quantity</div>
+   
+</div>
+@foreach (ChocolateShop.entity.Chocolate item in Model)
 {
-<tr>
-    <td>@item.Name</td>
-    <td>@item.Price</td>
-    <td>@item.Protein</td>
-    <td>@Html.ActionLink("Edit","Edit", new { id = item.Name})</td>
-    <td>@Html.ActionLink("Delete", "Delete", new { id = item.Name })</td>
-</tr>
+    <tr>
+        <td>@item.Company</td>
+        <td>@item.Name</td>
+        <td>@item.Price</td>
+        @*<td>@item.ManufactureDate</td>
+            <td>@item.ExpiryDate</td>*@
+        <td>@item.Description</td>
+        <td>@item.Quantity</td>
+        <td>@Html.ActionLink("Edit", "Edit", new { id = item.Name })</td>
+        <td>@Html.ActionLink("Delete", "Delete", new { id = item.Name })</td>
+    </tr>
 }

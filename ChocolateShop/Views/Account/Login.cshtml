@@ -1,23 +1,50 @@
-﻿@model Account.entity.Account
+﻿@model ChocolateShop.Models.LoginViewModel
 
 @{
     ViewBag.Title = "Login";
 }
-
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <h2>Login</h2>
-<table border="1">
-    <tr>
-        <td>Enter Username :</td>
-        <td>@Html.TextBoxFor(Model => Model.Name)</td>
-    </tr>
-    <tr>
-        <td>Enter Password :</td>
-        <td>@Html.TextBoxFor(Model => Model.Password)</td>
-    </tr>
-    <tr>
-        <td>
-            <input type="button" value="Login" />
-        </td>
-    </tr>
+<link href="~/Content/LoginStyle.css" rel="stylesheet" />
+@using (Html.BeginForm("Login", "Index", FormMethod.Post))
+{
+<div class="loginbox">
 
-</table>
+    <table class="login" border="1" align="center">
+        <tr>
+            <td> @Html.LabelFor(model => model.Name, new { @class = "col-md-2 control-label" })</td>
+
+            <td>
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+            </td>
+            <td>
+                @Html.ValidationMessageFor(model => model.Name)
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center" ;> @Html.LabelFor(model => model.Password, new { @class = "col-md-2 control-label" })</td>
+
+            <td>
+                @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+            </td>
+            <td>
+                @Html.ValidationMessageFor(model => model.Password)
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center;  border:hidden">
+                <input type="Submit" value="Login" onclick="@("window.location.href='" + @Url.Action("Index", "Default") + "'");"/>
+            </td>
+        </tr>
+
+    </table>
+
+    <a href="https://localhost:44394/Account/Signup" style="color:white">Create a new account!!</a>
+</div>
+}
+@section Validation{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}

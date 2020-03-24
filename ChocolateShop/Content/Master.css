@@ -1,0 +1,10 @@
+﻿body {
+    margin:0;
+    padding:0;
+    background-image:url("chocolate-poster.jpg");
+    background-size:cover;
+}
+.container {
+    background-color: #98947c;
+    width: 100%;
+}

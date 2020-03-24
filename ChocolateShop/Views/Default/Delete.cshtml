@@ -3,21 +3,27 @@
 @{
     ViewBag.Title = "Delete";
 }
-
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <h2>Delete</h2>
+<link href="~/Content/ChocoFunctions.css" rel="stylesheet" />
 @using (Html.BeginForm("Create", "Index", FormMethod.Post))
 {
-    <table border="1">
-        <tr>
-            <td>
-                Name :
-            </td>
-            <td>
-                @Html.TextBoxFor(name => Model.Name)
-            </td>
-        </tr>
-        <tr>
-        </tr>
-    </table>
+   // @Html.AntiForgeryToken()
+    <div class="Chocooperations">
+        <table class="chocotable" border="1">
+            <tr>
+                <td>
+                    Name :
+                </td>
+                <td>
+                    @Html.TextBoxFor(name => Model.Name)
+                </td>
+            </tr>
+            <tr>
+            </tr>
+        </table>
+    </div>
 
 }

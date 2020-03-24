@@ -4,44 +4,61 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ChocolateShop.entity;
+using ChocolateShop.Models;
+using ChocolateShop.DAL;
 
-namespace ChocolateShop.repository
+namespace ChocolateShop.DAL
 {
     public class ChocolateRepository
     {
+        ChocolateRepository chocolateRepository = new ChocolateRepository();
         public static List<Chocolate> chocolate = new List<Chocolate>();
-        static ChocolateRepository()
-        {
-            chocolate.Add(new Chocolate { Name = "CadburySilk", Price = 100, Protein = 10 });
-            chocolate.Add(new Chocolate { Name = "Milkybar", Price = 25, Protein = 15 });
-            chocolate.Add(new Chocolate { Name = "Kitkat", Price = 10, Protein = 10 });
-        }
-        public IEnumerable<Chocolate> GetChocolateDetails()
-        {
-            return chocolate;
-        }
+        
         public void AddChocolate(Chocolate chocolates)
         {
-            chocolate.Add(chocolates);
-        }
-        public Chocolate GetChocolate(string Names)
-        {
-            return chocolate.Find(id => id.Name.Equals(Names));
-        }
-        public void DeleteChocolate(string Names)
-        {
-            Chocolate list = GetChocolate(Names);
-            if(list!=null)
+            using (AccountContext db = new AccountContext())
             {
-                chocolate.Remove(list);
+                db.Chocolate.Add(chocolates);
+                db.SaveChanges();
+            }
+            
+        }
+        public List<Chocolate> GetChocolateDetails()
+        {
+            using (AccountContext accountContext = new AccountContext())
+            {
+                List<Chocolate> data = accountContext.Chocolate.ToList();
+                return data;
+            }
+        }
+
+        public void DeleteChocolate(string Name)
+        {
+            using (AccountContext db = new AccountContext())
+            {
+                Chocolate chocolate = db.Chocolate.Find(Name);
+                db.Chocolate.Remove(chocolate);
+                db.SaveChanges();
             }
         }
         public void UpdateChocolate(Chocolate chocolate)
         {
-            Chocolate updateChocolate = GetChocolate(chocolate.Name);
-            updateChocolate.Price = chocolate.Price;
-            updateChocolate.Protein = chocolate.Protein;
+            using (AccountContext db = new AccountContext())
+            {
+                db.Entry(chocolate).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
         }
-      
+
+        public Chocolate GetChocolate(string Name)
+        {
+            using(AccountContext accountContext = new AccountContext())
+            {
+                return accountContext.Chocolate.Where(chocolate => chocolate.Name == Name).FirstOrDefault();
+            }
+        }
+
+       
+        
     }
 }

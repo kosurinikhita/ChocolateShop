@@ -3,30 +3,61 @@
 @{
     ViewBag.Title = "Create";
 }
-
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <h2>Create</h2>
-@using (Html.BeginForm("Create","Default",FormMethod.Post))
+<link href="~/Content/ChocoFunctions.css" rel="stylesheet" />
+@using (Html.BeginForm("Create", "Default", FormMethod.Post))
 {
-<table>
-    <tr>
-        <td>Name :</td>
-        <td>@Html.TextBoxFor(Model => Model.Name)</td>
-    </tr>
-    <tr>
-        <td>Price :</td>
-        <td>@Html.TextBoxFor(Model => Model.Price)</td>
-    </tr>
-    <tr>
-        <td>Protein :</td>
-        <td>@Html.TextBoxFor(Model => Model.Protein)</td>
-    </tr>
-    <tr>
-        <td>
-            <input type="submit"/>
-        </td>
-        <td>
-            <a href="Index">Back</a>
-        </td>
-    </tr>
-</table>
+    //@Html.AntiForgeryToken()
+    <div class="Chocooperations">
+        <table class="chocotable" border="1">
+            <tr>
+                <td>Company :</td>
+                <td>@Html.TextBoxFor(Model => Model.Company)</td>
+            </tr>
+            <tr>
+                <td>Name :</td>
+                <td>@Html.TextBoxFor(Model => Model.Name)</td>
+            </tr>
+            <tr>
+                <td>Price :</td>
+                <td>@Html.TextBoxFor(Model => Model.Price)</td>
+            </tr>
+            @*<tr>
+            <td>Manufacture date :</td>
+            <td>@Html.TextBoxFor(Model => Model.ManufactureDate.ToShortDateString())</td>
+        </tr>
+        <tr>
+            <td>Expiry date :</td>
+            <td>@Html.TextBoxFor(Model => Model.ExpiryDate.ToShortDateString())</td>
+        </tr>*@
+            <tr>
+                <td>Description</td>
+                <td>@Html.TextBoxFor(Model => Model.Description)</td>
+            </tr>
+            <tr>
+                <td>Stock available :</td>
+                <td>@Html.TextBoxFor(Model => Model.Quantity)</td>
+            </tr>
+           
+            <tr>
+                <td>@Html.LabelFor(model  => model.CategorieId, htmlAttributes: new { @class = "control-label col-md-2"})</td>
+                <td>@Html.DropDownListFor(model => model.CategorieId, ViewBag.Categories as IEnumerable<SelectListItem>)</td>
+                <td>@Html.ValidationMessageFor(Model => Model.CategorieId, "", new { @class = "text-danger"})</td>
+                
+            </tr>
+            
+            <tr>
+
+                <td>
+                    <input type="submit" />
+                </td>
+                <td>
+                    <a href="Index">Back</a>
+                </td>
+            </tr>
+        </table>
+    </div>
 }

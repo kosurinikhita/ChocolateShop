@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ChocolateShop.entity.Categories>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<link href="~/Content/CategoriesStyle.css" rel="stylesheet" />
+@Html.ActionLink("Create new categorie", "Create")
+<br />
+@if (TempData["Message"] != null)
+{
+    @Html.Label((string)TempData["Message"])
+}
+<div class="Coperations">
+    <table class="table" border="1">
+        <tr>
+            <th>Id</th>
+            <th>Name</th> 
+        </tr>
+
+        @foreach (ChocolateShop.entity.Categories item in Model)
+        {
+            <tr>
+                <td>@item.CategorieId</td>
+                <td>@item.Name</td>             
+                <td>@Html.ActionLink("Edit", "Edit", new { id = item.Name })</td>
+                <td>@Html.ActionLink("Delete", "Delete", new { id = item.Name })</td>
+            </tr>
+        }
+    </table>
+</div>

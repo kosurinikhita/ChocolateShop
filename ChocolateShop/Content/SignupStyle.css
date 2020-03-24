@@ -1,0 +1,30 @@
+﻿body {
+}
+
+.signup {
+    border: 0;
+    margin-top: 50px;
+    border-color: transparent;
+}
+
+td {
+    padding: 15px;
+}
+
+span {
+    color: palevioletred;
+}
+
+.signupbox {
+    width: 340px;
+    height: 380px;
+    background: #000;
+    opacity: 0.5;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+}
+

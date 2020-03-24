@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BCF3351C-9EE9-4628-9D20-A8F3A318FC2B}</ProjectGuid>
+    <ProjectGuid>{CF420DB2-8015-412D-91CA-5ED38F7A128A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ChocolateShop.entity</RootNamespace>
-    <AssemblyName>ChocolateShop.entity</AssemblyName>
+    <RootNamespace>ChocolateShop.repository</RootNamespace>
+    <AssemblyName>ChocolateShop.repository</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -51,10 +51,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountEntity.cs" />
-    <Compile Include="Categories.cs" />
-    <Compile Include="Chocolate.cs" />
+    <Compile Include="AccountContext.cs" />
+    <Compile Include="AccountRepository.cs" />
+    <Compile Include="CategoriesRepository.cs" />
+    <Compile Include="ChocolateRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChocolateShop.entity\ChocolateShop.entity.csproj">
+      <Project>{bcf3351c-9ee9-4628-9d20-a8f3a318fc2b}</Project>
+      <Name>ChocolateShop.entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

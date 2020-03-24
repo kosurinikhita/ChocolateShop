@@ -1,4 +1,5 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -43,6 +44,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -92,6 +99,12 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CategoriesStyle.css" />
+    <Content Include="Content\ChocoFunctions.css" />
+    <Content Include="Content\chocolate-poster.jpg" />
+    <Content Include="Content\LoginStyle.css" />
+    <Content Include="Content\Master.css" />
+    <Content Include="Content\SignupStyle.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -113,10 +126,13 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\SignupViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -139,10 +155,15 @@
     <Content Include="Views\Default\Delete.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\Default\Edit.cshtml" />
-    <Content Include="Views\Default\Login.cshtml" />
-    <Content Include="Views\Default\Signup.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Signup.cshtml" />
+    <Content Include="Views\Default\Login.cshtml" />
+    <Content Include="Views\Database\Index.cshtml" />
+    <Content Include="Views\Database\DisplayDB.cshtml" />
+    <Content Include="Views\Categories\CreateCategories.cshtml" />
+    <Content Include="Views\Categories\DeleteCategories.cshtml" />
+    <Content Include="Views\Categories\EditCategories.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -152,21 +173,20 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\DisplayList\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Account.entity\Account.entity.csproj">
-      <Project>{3c9fbccc-8137-4495-abf3-8768b980b366}</Project>
-      <Name>Account.entity</Name>
+    <ProjectReference Include="..\ChocolateShop.BL\ChocolateShop.BL.csproj">
+      <Project>{675C754F-8BE8-48CA-9CBE-9038D20AE064}</Project>
+      <Name>ChocolateShop.BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\ChocolateShop.entity\ChocolateShop.entity.csproj">
       <Project>{bcf3351c-9ee9-4628-9d20-a8f3a318fc2b}</Project>
       <Name>ChocolateShop.entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ChocolateShop.repository\ChocolateShop.repository.csproj">
+    <ProjectReference Include="..\ChocolateShop.repository\ChocolateShop.DAL.csproj">
       <Project>{cf420db2-8015-412d-91ca-5ed38f7a128a}</Project>
-      <Name>ChocolateShop.repository</Name>
+      <Name>ChocolateShop.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
@@ -199,7 +219,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
